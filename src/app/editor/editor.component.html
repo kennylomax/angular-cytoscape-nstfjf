@@ -1,0 +1,67 @@
+<button
+  id="rename"
+  (click)="rename()"
+  [disabled]="newData.length == 0 || numSelected != 1"
+>
+  rename
+</button>
+<button id="addroot" [disabled]="newData.length == 0" (click)="addchild(false)">
+  addroot
+</button>
+<button
+  id="addchild"
+  [disabled]="newData.length == 0 || numSelected != 1"
+  (click)="addchild(true)"
+>
+  addchild
+</button>
+<button id="removeNode" [disabled]="numSelected != 1" (click)="removeNode()">
+  removeNode
+</button>
+<button id="addweight" [disabled]="numSelected == 0" (click)="adjustweight(1)">
+  addweight
+</button>
+<button
+  id="reduceweight"
+  [disabled]="numSelected == 0"
+  (click)="adjustweight(-1)"
+>
+  reduceweight
+</button>
+
+<table>
+  <tr>
+    <td valign="top">
+      <div id="container">
+        <div id="cy" (click)="evtListener()"></div>
+      </div>
+    </td>
+    <td valign="top">
+      <form>
+        SelectedId
+        <span>{{ selectedId }}</span
+        >&nbsp;&nbsp; NumSelected<span>{{ numSelected }}</span>
+
+        Search Term:
+        <input
+          id="scratchPad"
+          name="scratchPad"
+          type="text"
+          (input)="search()"
+          [(ngModel)]="scratchPad"
+        />
+        New Data:
+        <input id="newData" name="newData" type="text" [(ngModel)]="newData" />
+        Description:
+        <input
+          id="desc"
+          name="desc"
+          type="text"
+          [(ngModel)]="desc"
+          (input)="adjustDesc()"
+        />
+        <br />
+      </form>
+    </td>
+  </tr>
+</table>
