@@ -126,7 +126,7 @@ export class EditorComponent implements OnInit {
 
   redraw() {
     this.cy.json({ style: this.mystyle });
-    // var expression = jsonata('{"nodes.data": nodes.data^(-gap)}');
+    var expression = jsonata('{"nodes.data": nodes.data^(-gap)}');
     // var result = expression.evaluate(this.cy.elements); // returns 24
   }
 
